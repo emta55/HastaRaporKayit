@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Hasta Bilgileri</title>
 </head>
 <body>
-$END$
+    <div align="center">
+        <h1>Hasta Listesi</h1>
+        <a href="/new">Yeni Hasta Ekle</a>
+        <table border="1" cellpadding="10">
+            <thead>
+            <tr>
+                <th>Hasta ID</th>
+                <th>Hasta Dosya No</th>
+                <th>Hasta Ismi</th>
+                <th>Hasta Soyismi</th>
+                <th>Hasta Tc Kimlik No</th>
+                <th>Hasta Tanı Baslıgı</th>
+                <th>Hasta Tanı Detayları</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="patient : ${patientList}">
+                <td th:text="${patient.id}">Hasta ID</td>
+                <td th:text="${patient.dosyaNo}">Dosya No</td>
+                <td th:text="${patient.isim}">Hasta Ismi</td>
+                <td th:text="${patient.soyIsim}">Hasta Soyismi</td>
+                <td th:text="${patient.tcKimlik}">Hasta Tc Kimlik No</td>
+                <td th:text="${patient.taniBasligi}">Hasta Tanı Baslıgı</td>
+                <td th:text="${patient.taniDetaylari}">Hasta Tanı Detayları</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${patient.id}}">Düzenle</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' + ${patient.id}}">Sil</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
