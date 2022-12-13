@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Yeni Hasta</title>
 </head>
 <body>
-$END$
+<div align="center">
+    <h1>Yeni Hasta</h1>
+    <br />
+    <form action="#" th:action="@{/save}" th:object="${patient}"
+          method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Hasta Dosya No:</td>
+                <td><input type="text" th:field="*{dosyaNo}" /></td>
+            </tr>
+            <tr>
+                <td>Hasta Adı:</td>
+                <td><input type="text" th:field="*{isim}" /></td>
+            </tr>
+            <tr>
+                <td>Hasta Soyadı:</td>
+                <td><input type="text" th:field="*{soyIsim}" /></td>
+            </tr>
+            <tr>
+                <td>Tc Kimlik No:</td>
+                <td><input type="text" th:field="*{tcKimlik}" /></td>
+            </tr>
+            <tr>
+                <td>Tani Basligi:</td>
+                <td><input type="text" th:field="*{taniBasligi}" /></td>
+            </tr>
+            <tr>
+                <td>Tani Detayları:</td>
+                <td><input type="text" th:field="*{taniDetaylari}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Kaydet</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>
